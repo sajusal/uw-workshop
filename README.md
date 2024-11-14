@@ -18,7 +18,7 @@ The objective of the hands on section of this workshop is the following:
 
 ## Lab Topology
 
-![image](images/lab-topology.jpg)
+![image](lab-topology.jpg)
 
 ## Deploying the lab
 
