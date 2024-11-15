@@ -20,62 +20,48 @@ topology:
       mgmt-ipv4: 172.20.20.2
       mgmt-ipv6: 2001:172:20:20::2
     leaf2:
-      mgmt-ipv4: 172.20.20.4
-      mgmt-ipv6: 2001:172:20:20::4
-    spine1:
       mgmt-ipv4: 172.20.20.3
       mgmt-ipv6: 2001:172:20:20::3
-    spine2:
+    spine1:
       mgmt-ipv4: 172.20.20.4
       mgmt-ipv6: 2001:172:20:20::4
+    spine2:
+      mgmt-ipv4: 172.20.20.5
+      mgmt-ipv6: 2001:172:20:20::5
     client1:
       kind: linux
       mgmt-ipv4: 172.20.20.10
       mgmt-ipv6: 2001:172:20:20::10
       exec:
         - ip address add 10.100.10.10/24 dev eth1
-        - ip -6 address add 172:16:10::50/64 dev eth1
-        - ip route add 10.90.1.0/24 via 172.16.10.254
-        - ip route add 10.80.1.0/24 via 172.16.10.254
-        - ip -6 route add 10:90:1::/64 via 172:16:10::254
-        - ip -6 route add 10:80:1::/64 via 172:16:10::254
+        - ip route add 10.100.0.0/16 via 10.100.10.11
     client2:
       kind: linux
       mgmt-ipv4: 172.20.20.11
       mgmt-ipv6: 2001:172:20:20::11
-      binds:
-        - ./configs/hosts/client2/interfaces:/etc/network/interfaces
-        - ./configs/hosts/client2/staticroute:/etc/conf.d/staticroute
       exec:
-        - /root/restart-services.sh
-        - ip route add 172.16.10.0/24 via 10.80.1.2
-        - ip -6 route add 10:90:1::/64 via 10:80:1::2
+        - ip address add 10.100.20.20/24 dev eth1
+        - ip route add 10.100.0.0/16 via 10.100.20.22
     client3:
       kind: linux
       mgmt-ipv4: 172.20.20.12
       mgmt-ipv6: 2001:172:20:20::12
-      binds:
-        - ./configs/hosts/client3/interfaces:/etc/network/interfaces
-        - ./configs/hosts/client3/staticroute:/etc/conf.d/staticroute        
       exec:
-        - /root/restart-services.sh
-        - ip -6 route add 10:90:1::/64 via 172:16:10::253
-        - ip -6 route add 10:80:1::/64 via 172:16:10::253
+        - ip address add 10.100.30.30/24 dev eth1
+        - ip route add 10.100.0.0/16 via 10.100.30.33
     client4:
       kind: linux
       mgmt-ipv4: 172.20.20.13
       mgmt-ipv6: 2001:172:20:20::13
-      binds:
-        - ./configs/hosts/client4/interfaces:/etc/network/interfaces
-        - ./configs/hosts/client4/staticroute:/etc/conf.d/staticroute
       exec:
-        - /root/restart-services.sh
-        - ip route add 172.16.10.0/24 via 10.90.1.2
-        - ip -6 route add 10:80:1::/64 via 10:90:1::2
+        - ip address add 10.100.40.40/24 dev eth1
+        - ip route add 10.100.0.0/16 via 10.100.40.44
   links:
       # spine-leaf links
-    - endpoints: ["leaf1:e1-1", "spine:e1-1"]
-    - endpoints: ["leaf2:e1-2", "spine:e1-2"]
+    - endpoints: ["leaf1:e1-1", "spine1:e1-1"]
+    - endpoints: ["leaf2:e1-1", "spine2:e1-1"]    
+    - endpoints: ["leaf1:e1-2", "spine2:e1-2"]
+    - endpoints: ["leaf2:e1-2", "spine1:e1-2"]    
     
       # leaf-client links
     - endpoints: ["client1:eth1","leaf1:e1-10"]
