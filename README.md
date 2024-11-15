@@ -46,10 +46,25 @@ To deploy the lab, run the following:
 
 ```bash
 cd uw-workshop/
-sudo clab deploy -t srl-evpn.clab.yml
+sudo clab deploy -t srl-uw.clab.yml
 ```
 
 [Containerlab](https://containerlab.dev/) will deploy the lab and display a table with the list of nodes and their IPs.
+
+```bash
++---+---------+--------------+-------------------------------+---------------+---------+-----------------+-----------------------+
+| # |  Name   | Container ID |             Image             |     Kind      |  State  |  IPv4 Address   |     IPv6 Address      |
++---+---------+--------------+-------------------------------+---------------+---------+-----------------+-----------------------+
+| 1 | client1 | 7a23b8aacbf2 | ghcr.io/srl-labs/alpine       | linux         | running | 172.20.20.10/24 | 2001:172:20:20::10/64 |
+| 2 | client2 | ff496107fb50 | ghcr.io/srl-labs/alpine       | linux         | running | 172.20.20.11/24 | 2001:172:20:20::11/64 |
+| 3 | client3 | fc70070baca3 | ghcr.io/srl-labs/alpine       | linux         | running | 172.20.20.12/24 | 2001:172:20:20::12/64 |
+| 4 | client4 | 4314b8703505 | ghcr.io/srl-labs/alpine       | linux         | running | 172.20.20.13/24 | 2001:172:20:20::13/64 |
+| 5 | leaf1   | 18d2367c0bfe | ghcr.io/nokia/srlinux:24.10.1 | nokia_srlinux | running | 172.20.20.2/24  | 2001:172:20:20::2/64  |
+| 6 | leaf2   | 5d69ffd0db22 | ghcr.io/nokia/srlinux:24.10.1 | nokia_srlinux | running | 172.20.20.3/24  | 2001:172:20:20::3/64  |
+| 7 | spine1  | 0299e53187ba | ghcr.io/nokia/srlinux:24.10.1 | nokia_srlinux | running | 172.20.20.4/24  | 2001:172:20:20::4/64  |
+| 8 | spine2  | b24abc3501b4 | ghcr.io/nokia/srlinux:24.10.1 | nokia_srlinux | running | 172.20.20.5/24  | 2001:172:20:20::5/64  |
++---+---------+--------------+-------------------------------+---------------+---------+-----------------+-----------------------+
+```
 
 To display all deployed labs on your VM at any time, use:
 
@@ -102,3 +117,9 @@ Here's a reference table with some commonly used commands.
 | Output modifiers | `<command> \| as {table\|json\|yaml}` |
 | Access Linux shell | `bash` |
 | Find a command | `tree flat detail \| grep <keyword>` |
+
+## Configure Interfaces
+
+## Configure BGP
+
+## Configure VRF
