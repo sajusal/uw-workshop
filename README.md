@@ -22,16 +22,16 @@ The objective of the hands on section of this workshop is the following:
 
 ## Deploying the lab
 
-Verify that the git repo files are available on your VM.
+Verify that the git repo files are available on your codespaces VM.
 
 ```bash
-ls -lrt workshop/n92-evpn-lab/
+ls -lrt uw-workshop/
 ```
 
 To deploy the lab, run the following:
 
 ```bash
-cd workshop/n92-evpn-lab
+cd uw-workshop/
 sudo clab deploy -t srl-evpn.clab.yml
 ```
 
