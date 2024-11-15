@@ -10,6 +10,20 @@ Shortcut links to major sections in this README:
 |---|---|
 | [Lab Topology](#lab-topology) | [Deploying the lab](#deploying-the-lab) |
 
+## Lab Environment
+
+---
+<div align=center>
+<a href="https://codespaces.new/sajusal/uw-workshop?quickstart=1">
+<img src="https://gitlab.com/rdodin/pics/-/wikis/uploads/d78a6f9f6869b3ac3c286928dd52fa08/run_in_codespaces-v1.svg?sanitize=true" style="width:50%"/></a>
+
+**[Run](https://codespaces.new/sajusal/uw-workshop?quickstart=1) this lab in GitHub Codespaces for free**.  
+[Learn more](https://containerlab.dev/manual/codespaces/) about Containerlab for Codespaces.
+
+</div>
+
+---
+
 ## Workshop
 The objective of the hands on section of this workshop is the following:
 - Configure a leaf-spine fabric
