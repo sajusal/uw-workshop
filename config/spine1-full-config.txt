@@ -1,0 +1,90 @@
+set / interface ethernet-1/1 description To-Leaf1
+set / interface ethernet-1/1 admin-state enable
+set / interface ethernet-1/1 vlan-tagging true
+set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv4 address 192.168.1.1/31
+set / interface ethernet-1/1 subinterface 0 ipv6 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv6 router-advertisement router-role admin-state enable
+set / interface ethernet-1/1 subinterface 0 vlan encap single-tagged vlan-id 1
+set / interface ethernet-1/2 description To-Leaf2
+set / interface ethernet-1/2 admin-state enable
+set / interface ethernet-1/2 vlan-tagging true
+set / interface ethernet-1/2 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/2 subinterface 0 ipv4 address 192.168.1.7/31
+set / interface ethernet-1/2 subinterface 0 ipv6 admin-state enable
+set / interface ethernet-1/2 subinterface 0 ipv6 router-advertisement router-role admin-state enable
+set / interface ethernet-1/2 subinterface 0 vlan encap single-tagged vlan-id 1
+set / interface system0 description system
+set / interface system0 admin-state enable
+set / interface system0 subinterface 0 ipv4 admin-state enable
+set / interface system0 subinterface 0 ipv4 address 172.16.10.3/32
+set / network-instance default type default
+set / network-instance default admin-state enable
+set / network-instance default description "Default network instance"
+set / network-instance default ip-forwarding receive-ipv4-check false
+set / network-instance default interface ethernet-1/1.0
+set / network-instance default interface ethernet-1/2.0
+set / network-instance default interface system0.0
+set / network-instance default protocols bgp admin-state enable
+set / network-instance default protocols bgp autonomous-system 64500
+set / network-instance default protocols bgp router-id 172.16.10.3
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/1.0 peer-group ebgp-underlay
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/1.0 allowed-peer-as [ 64500..64505 ]
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/2.0 peer-group ebgp-underlay
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/2.0 allowed-peer-as [ 64500..64505 ]
+set / network-instance default protocols bgp afi-safi evpn evpn rapid-update true
+set / network-instance default protocols bgp afi-safi ipv4-unicast admin-state enable
+set / network-instance default protocols bgp afi-safi ipv4-unicast multipath allow-multiple-as true
+set / network-instance default protocols bgp afi-safi ipv4-unicast multipath maximum-paths 64
+set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast advertise-ipv6-next-hops true
+set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast receive-ipv6-next-hops true
+set / network-instance default protocols bgp afi-safi ipv6-unicast admin-state enable
+set / network-instance default protocols bgp afi-safi ipv6-unicast multipath allow-multiple-as true
+set / network-instance default protocols bgp afi-safi ipv6-unicast multipath maximum-paths 64
+set / network-instance default protocols bgp route-advertisement rapid-withdrawal true
+set / network-instance default protocols bgp route-advertisement wait-for-fib-install true
+set / network-instance default protocols bgp group ebgp-underlay admin-state enable
+set / network-instance default protocols bgp group ebgp-underlay export-policy [ export-all ]
+set / network-instance default protocols bgp group ebgp-underlay import-policy [ import-all ]
+set / network-instance default protocols bgp group ebgp-underlay failure-detection enable-bfd true
+set / network-instance default protocols bgp group ebgp-underlay failure-detection fast-failover true
+set / network-instance default protocols bgp group ebgp-underlay afi-safi evpn admin-state disable
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv4-unicast admin-state enable
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv4-unicast ipv4-unicast advertise-ipv6-next-hops true
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv4-unicast ipv4-unicast receive-ipv6-next-hops true
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv6-unicast admin-state enable
+set / network-instance default protocols bgp group ebgp-underlay timers connect-retry 10
+set / network-instance default protocols bgp group ebgp-underlay timers hold-time 3
+set / network-instance default protocols bgp group ebgp-underlay timers keepalive-interval 1
+set / network-instance default protocols bgp group ebgp-underlay timers minimum-advertisement-interval 1
+set / network-instance default protocols bgp group ebgp-underlay transport passive-mode false
+set / network-instance default protocols bgp neighbor 192.168.1.0 admin-state enable
+set / network-instance default protocols bgp neighbor 192.168.1.0 peer-as 64501
+set / network-instance default protocols bgp neighbor 192.168.1.0 peer-group ebgp-underlay
+set / network-instance default protocols bgp neighbor 192.168.1.6 admin-state enable
+set / network-instance default protocols bgp neighbor 192.168.1.6 peer-as 64502
+set / network-instance default protocols bgp neighbor 192.168.1.6 peer-group ebgp-underlay
+set / routing-policy policy export-all default-action policy-result accept
+set / routing-policy policy export-to-underlay default-action policy-result reject
+set / routing-policy policy export-to-underlay statement 10 match protocol local
+set / routing-policy policy export-to-underlay statement 10 action policy-result accept
+set / routing-policy policy export-to-underlay statement 10 action bgp local-preference set 100
+set / routing-policy policy export-to-underlay statement 20 match protocol bgp
+set / routing-policy policy export-to-underlay statement 20 action policy-result accept
+set / routing-policy policy export-to-underlay statement 20 action bgp local-preference set 100
+set / routing-policy policy export-to-underlay statement 30 match protocol aggregate
+set / routing-policy policy export-to-underlay statement 30 action policy-result accept
+set / routing-policy policy export-to-underlay statement 30 action bgp local-preference set 100
+set / routing-policy policy export-to-underlay statement 40 match protocol host
+set / routing-policy policy export-to-underlay statement 40 action policy-result accept
+set / routing-policy policy export-to-underlay statement 40 action bgp local-preference set 100
+set / routing-policy policy export-to-underlay statement 50 match protocol arp-nd
+set / routing-policy policy export-to-underlay statement 50 action policy-result accept
+set / routing-policy policy export-to-underlay statement 50 action bgp local-preference set 100
+set / routing-policy policy export-to-underlay statement 60 match protocol static
+set / routing-policy policy export-to-underlay statement 60 action policy-result accept
+set / routing-policy policy export-to-underlay statement 60 action route-preference set 5
+set / routing-policy policy import-all default-action policy-result accept
+set / routing-policy policy import-from-underlay default-action policy-result reject
+set / routing-policy policy import-from-underlay statement 20 match protocol bgp
+set / routing-policy policy import-from-underlay statement 20 action policy-result accept
