@@ -176,6 +176,7 @@ Interface configuration on Leaf1:
 ```srl
 set / interface ethernet-1/1 admin-state enable
 set / interface ethernet-1/1 vlan-tagging true
+set / interface ethernet-1/1 description To-Spine1
 set / interface ethernet-1/1 subinterface 0 type routed
 set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/1 subinterface 0 ipv4 address 192.168.1.0/31
@@ -184,6 +185,7 @@ set / interface ethernet-1/1 subinterface 0 ipv6 router-advertisement router-rol
 set / interface ethernet-1/1 subinterface 0 vlan encap single-tagged vlan-id 1
 set / interface ethernet-1/2 admin-state enable
 set / interface ethernet-1/2 vlan-tagging true
+set / interface ethernet-1/2 description To-Spine2
 set / interface ethernet-1/2 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/2 subinterface 0 ipv4 address 192.168.1.2/31
 set / interface ethernet-1/2 subinterface 0 ipv6 admin-state enable
@@ -222,6 +224,7 @@ Interface configuration on Leaf2:
 ```srl
 set / interface ethernet-1/1 admin-state enable
 set / interface ethernet-1/1 vlan-tagging true
+set / interface ethernet-1/1 description To-Spine2
 set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/1 subinterface 0 ipv4 address 192.168.1.4/31
 set / interface ethernet-1/1 subinterface 0 ipv6 admin-state enable
@@ -229,6 +232,7 @@ set / interface ethernet-1/1 subinterface 0 ipv6 router-advertisement router-rol
 set / interface ethernet-1/1 subinterface 0 vlan encap single-tagged vlan-id 1
 set / interface ethernet-1/2 admin-state enable
 set / interface ethernet-1/2 vlan-tagging true
+set / interface ethernet-1/2 description To-Spine1
 set / interface ethernet-1/2 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/2 subinterface 0 ipv4 address 192.168.1.6/31
 set / interface ethernet-1/2 subinterface 0 ipv6 admin-state enable
@@ -259,6 +263,7 @@ Interface configuration on spine1:
 ```srl
 set / interface ethernet-1/1 admin-state enable
 set / interface ethernet-1/1 vlan-tagging true
+set / interface ethernet-1/1 description To-Leaf1
 set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/1 subinterface 0 ipv4 address 192.168.1.1/31
 set / interface ethernet-1/1 subinterface 0 ipv6 admin-state enable
@@ -266,6 +271,7 @@ set / interface ethernet-1/1 subinterface 0 ipv6 router-advertisement router-rol
 set / interface ethernet-1/1 subinterface 0 vlan encap single-tagged vlan-id 1
 set / interface ethernet-1/2 admin-state enable
 set / interface ethernet-1/2 vlan-tagging true
+set / interface ethernet-1/2 description To-Leaf2
 set / interface ethernet-1/2 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/2 subinterface 0 ipv4 address 192.168.1.7/31
 set / interface ethernet-1/2 subinterface 0 ipv6 admin-state enable
@@ -282,6 +288,7 @@ Interface configuration on spine2:
 ```srl
 set / interface ethernet-1/1 admin-state enable
 set / interface ethernet-1/1 vlan-tagging true
+set / interface ethernet-1/1 description To-Leaf2
 set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/1 subinterface 0 ipv4 address 192.168.1.5/31
 set / interface ethernet-1/1 subinterface 0 ipv6 admin-state enable
@@ -289,6 +296,7 @@ set / interface ethernet-1/1 subinterface 0 ipv6 router-advertisement router-rol
 set / interface ethernet-1/1 subinterface 0 vlan encap single-tagged vlan-id 1
 set / interface ethernet-1/2 admin-state enable
 set / interface ethernet-1/2 vlan-tagging true
+set / interface ethernet-1/2 description To-Leaf1
 set / interface ethernet-1/2 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/2 subinterface 0 ipv4 address 192.168.1.3/31
 set / interface ethernet-1/2 subinterface 0 ipv6 admin-state enable
