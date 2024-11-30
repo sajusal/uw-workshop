@@ -167,6 +167,455 @@ Here's a reference table with some commonly used commands.
 
 ## Configure Interfaces
 
+Interface configuration on Leaf1:
+
+```srl
+set / interface ethernet-1/1 admin-state enable
+set / interface ethernet-1/1 vlan-tagging true
+set / interface ethernet-1/1 subinterface 0 type routed
+set / interface ethernet-1/1 subinterface 0 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv4 address 192.168.1.0/31
+set / interface ethernet-1/1 subinterface 0 ipv6 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv6 router-advertisement router-role admin-state enable
+set / interface ethernet-1/1 subinterface 0 vlan encap single-tagged vlan-id 1
+set / interface ethernet-1/2 admin-state enable
+set / interface ethernet-1/2 vlan-tagging true
+set / interface ethernet-1/2 subinterface 0 admin-state enable
+set / interface ethernet-1/2 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/2 subinterface 0 ipv4 address 192.168.1.2/31
+set / interface ethernet-1/2 subinterface 0 ipv6 admin-state enable
+set / interface ethernet-1/2 subinterface 0 ipv6 router-advertisement router-role admin-state enable
+set / interface ethernet-1/2 subinterface 0 vlan encap single-tagged vlan-id 1
+set / interface ethernet-1/10 description Client-1-1
+set / interface ethernet-1/10 admin-state enable
+set / interface ethernet-1/10 ethernet port-speed 40G
+set / interface ethernet-1/10 subinterface 0 type routed
+set / interface ethernet-1/10 subinterface 0 admin-state enable
+set / interface ethernet-1/10 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/10 subinterface 0 ipv4 address 10.100.10.11/24
+set / interface ethernet-1/10 subinterface 0 ipv4 arp host-route populate dynamic datapath-programming true
+set / interface ethernet-1/10 subinterface 0 ipv6 admin-state enable
+set / interface ethernet-1/11 description Client-1-2
+set / interface ethernet-1/11 admin-state enable
+set / interface ethernet-1/11 ethernet port-speed 40G
+set / interface ethernet-1/11 subinterface 0 type routed
+set / interface ethernet-1/11 subinterface 0 admin-state enable
+set / interface ethernet-1/11 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/11 subinterface 0 ipv4 address 10.100.20.22/24
+set / interface ethernet-1/11 subinterface 0 ipv4 arp host-route populate dynamic datapath-programming true
+set / interface ethernet-1/11 subinterface 0 ipv6 admin-state enable
+set / interface ethernet-1/12 subinterface 0 ipv6 admin-state enable
+set / interface lo0 admin-state enable
+set / interface lo0 subinterface 0 admin-state enable
+set / interface lo0 subinterface 0 ipv4 admin-state enable
+set / interface lo0 subinterface 0 ipv4 address 1.1.1.1/32
+set / interface lo0 subinterface 0 ipv6 admin-state enable
+set / interface lo0 subinterface 0 ipv6 address 1::/128
+set / interface system0 description system
+set / interface system0 admin-state enable
+set / interface system0 subinterface 0 admin-state enable
+set / interface system0 subinterface 0 ipv4 admin-state enable
+set / interface system0 subinterface 0 ipv4 address 172.16.10.1/32
+```
+
+Interface configuration on Leaf2:
+
+```srl
+set / interface ethernet-1/1 admin-state enable
+set / interface ethernet-1/1 vlan-tagging true
+set / interface ethernet-1/1 subinterface 0 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv4 address 192.168.1.4/31
+set / interface ethernet-1/1 subinterface 0 ipv6 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv6 router-advertisement router-role admin-state enable
+set / interface ethernet-1/1 subinterface 0 vlan encap single-tagged vlan-id 1
+set / interface ethernet-1/2 admin-state enable
+set / interface ethernet-1/2 vlan-tagging true
+set / interface ethernet-1/2 subinterface 0 admin-state enable
+set / interface ethernet-1/2 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/2 subinterface 0 ipv4 address 192.168.1.6/31
+set / interface ethernet-1/2 subinterface 0 ipv6 admin-state enable
+set / interface ethernet-1/2 subinterface 0 ipv6 router-advertisement router-role admin-state enable
+set / interface ethernet-1/2 subinterface 0 vlan encap single-tagged vlan-id 1
+set / interface ethernet-1/10 description Client-2-1
+set / interface ethernet-1/10 admin-state enable
+set / interface ethernet-1/10 ethernet port-speed 40G
+set / interface ethernet-1/10 subinterface 0 type routed
+set / interface ethernet-1/10 subinterface 0 admin-state enable
+set / interface ethernet-1/10 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/10 subinterface 0 ipv4 address 10.100.30.33/24
+set / interface ethernet-1/10 subinterface 0 ipv4 arp host-route populate dynamic datapath-programming true
+set / interface ethernet-1/11 description Client-2-2
+set / interface ethernet-1/11 admin-state enable
+set / interface ethernet-1/11 ethernet port-speed 40G
+set / interface ethernet-1/11 subinterface 0 type routed
+set / interface ethernet-1/11 subinterface 0 admin-state enable
+set / interface ethernet-1/11 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/11 subinterface 0 ipv4 address 10.100.40.44/24
+set / interface ethernet-1/11 subinterface 0 ipv4 arp host-route populate dynamic datapath-programming true
+set / interface system0 description system
+set / interface system0 admin-state enable
+set / interface system0 subinterface 0 admin-state enable
+set / interface system0 subinterface 0 ipv4 admin-state enable
+set / interface system0 subinterface 0 ipv4 address 172.16.10.2/32
+```
+
+Interface configuration on spine1:
+
+```srl
+set / interface ethernet-1/1 admin-state enable
+set / interface ethernet-1/1 vlan-tagging true
+set / interface ethernet-1/1 subinterface 0 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv4 address 192.168.1.1/31
+set / interface ethernet-1/1 subinterface 0 ipv6 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv6 router-advertisement router-role admin-state enable
+set / interface ethernet-1/1 subinterface 0 vlan encap single-tagged vlan-id 1
+set / interface ethernet-1/2 admin-state enable
+set / interface ethernet-1/2 vlan-tagging true
+set / interface ethernet-1/2 subinterface 0 admin-state enable
+set / interface ethernet-1/2 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/2 subinterface 0 ipv4 address 192.168.1.7/31
+set / interface ethernet-1/2 subinterface 0 ipv6 admin-state enable
+set / interface ethernet-1/2 subinterface 0 ipv6 router-advertisement router-role admin-state enable
+set / interface ethernet-1/2 subinterface 0 vlan encap single-tagged vlan-id 1
+set / interface system0 description system
+set / interface system0 admin-state enable
+set / interface system0 subinterface 0 admin-state enable
+set / interface system0 subinterface 0 ipv4 admin-state enable
+set / interface system0 subinterface 0 ipv4 address 172.16.10.3/32
+```
+
+Interface configuration on spine2:
+
+```srl
+set / interface ethernet-1/1 admin-state enable
+set / interface ethernet-1/1 vlan-tagging true
+set / interface ethernet-1/1 subinterface 0 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv4 address 192.168.1.5/31
+set / interface ethernet-1/1 subinterface 0 ipv6 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv6 router-advertisement router-role admin-state enable
+set / interface ethernet-1/1 subinterface 0 vlan encap single-tagged vlan-id 1
+set / interface ethernet-1/2 admin-state enable
+set / interface ethernet-1/2 vlan-tagging true
+set / interface ethernet-1/2 subinterface 0 admin-state enable
+set / interface ethernet-1/2 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/2 subinterface 0 ipv4 address 192.168.1.3/31
+set / interface ethernet-1/2 subinterface 0 ipv6 admin-state enable
+set / interface ethernet-1/2 subinterface 0 ipv6 router-advertisement router-role admin-state enable
+set / interface ethernet-1/2 subinterface 0 vlan encap single-tagged vlan-id 1
+set / interface system0 description system
+set / interface system0 admin-state enable
+set / interface system0 subinterface 0 admin-state enable
+set / interface system0 subinterface 0 ipv4 admin-state enable
+set / interface system0 subinterface 0 ipv4 address 172.16.10.4/32
+```
+
+## Default Network Instance
+
+Network instance configuration on leaf1 and leaf2:
+
+```srl
+set / network-instance default type default
+set / network-instance default admin-state enable
+set / network-instance default description "Default network instance"
+set / network-instance default ip-forwarding receive-ipv4-check false
+set / network-instance default inter-instance-policies apply-policy import-policy import-all
+set / network-instance default inter-instance-policies apply-policy export-policy export-all
+set / network-instance default interface ethernet-1/1.0
+set / network-instance default interface ethernet-1/10.0
+set / network-instance default interface ethernet-1/11.0
+set / network-instance default interface ethernet-1/2.0
+set / network-instance default interface lo0.0
+set / network-instance default interface system0.0
+```
+
+Network instance configuration on spine1 and spine2:
+
+```srl
+set / network-instance default type default
+set / network-instance default admin-state enable
+set / network-instance default description "Default network instance"
+set / network-instance default ip-forwarding receive-ipv4-check false
+set / network-instance default interface ethernet-1/1.0
+set / network-instance default interface ethernet-1/2.0
+set / network-instance default interface system0.0
+```
+
+## Static Routes
+
+Static route configuration on leaf1:
+
+```srl
+set / network-instance default static-routes route 11.11.11.11/32 admin-state enable
+set / network-instance default static-routes route 11.11.11.11/32 metric 1
+set / network-instance default static-routes route 11.11.11.11/32 preference 10
+set / network-instance default static-routes route 11.11.11.11/32 next-hop-group nhg-10.100.10.0/24
+set / network-instance default next-hop-groups group nhg-10.100.10.0/24 admin-state enable
+set / network-instance default next-hop-groups group nhg-10.100.10.0/24 nexthop 1 ip-address 10.100.10.10
+set / network-instance default next-hop-groups group nhg-10.100.10.0/24 nexthop 1 admin-state enable
+set / network-instance default next-hop-groups group nhg-10.100.10.0/24 nexthop 1 resolve true
+```
+
+## Routing Policy
+
+Routing policy configuration on all routers:
+
+```srl
+set / routing-policy policy export-all default-action policy-result accept
+set / routing-policy policy export-to-underlay default-action policy-result reject
+set / routing-policy policy export-to-underlay statement 10 match protocol local
+set / routing-policy policy export-to-underlay statement 10 action policy-result accept
+set / routing-policy policy export-to-underlay statement 10 action bgp local-preference set 100
+set / routing-policy policy export-to-underlay statement 20 match protocol bgp
+set / routing-policy policy export-to-underlay statement 20 action policy-result accept
+set / routing-policy policy export-to-underlay statement 20 action bgp local-preference set 100
+set / routing-policy policy export-to-underlay statement 30 match protocol aggregate
+set / routing-policy policy export-to-underlay statement 30 action policy-result accept
+set / routing-policy policy export-to-underlay statement 30 action bgp local-preference set 100
+set / routing-policy policy export-to-underlay statement 40 match protocol host
+set / routing-policy policy export-to-underlay statement 40 action policy-result accept
+set / routing-policy policy export-to-underlay statement 40 action bgp local-preference set 100
+set / routing-policy policy export-to-underlay statement 50 match protocol arp-nd
+set / routing-policy policy export-to-underlay statement 50 action policy-result accept
+set / routing-policy policy export-to-underlay statement 50 action bgp local-preference set 100
+set / routing-policy policy export-to-underlay statement 60 match protocol static
+set / routing-policy policy export-to-underlay statement 60 action policy-result accept
+set / routing-policy policy export-to-underlay statement 60 action route-preference set 5
+set / routing-policy policy import-all default-action policy-result accept
+set / routing-policy policy import-from-underlay default-action policy-result reject
+set / routing-policy policy import-from-underlay statement 20 match protocol bgp
+set / routing-policy policy import-from-underlay statement 20 action policy-result accept
+```
+
 ## Configure BGP
 
-## Configure VRF
+BGP configuration on leaf1:
+
+```srl
+set / network-instance default protocols bgp admin-state enable
+set / network-instance default protocols bgp autonomous-system 64501
+set / network-instance default protocols bgp router-id 172.16.10.1
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/1.0 peer-group ebgp-underlay
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/1.0 allowed-peer-as [ 64500..64505 ]
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/2.0 peer-group ebgp-underlay
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/2.0 allowed-peer-as [ 64500..64505 ]
+set / network-instance default protocols bgp afi-safi evpn evpn rapid-update true
+set / network-instance default protocols bgp afi-safi ipv4-unicast admin-state enable
+set / network-instance default protocols bgp afi-safi ipv4-unicast multipath allow-multiple-as true
+set / network-instance default protocols bgp afi-safi ipv4-unicast multipath maximum-paths 64
+set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast advertise-ipv6-next-hops true
+set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast receive-ipv6-next-hops true
+set / network-instance default protocols bgp afi-safi ipv6-unicast admin-state enable
+set / network-instance default protocols bgp afi-safi ipv6-unicast multipath allow-multiple-as true
+set / network-instance default protocols bgp afi-safi ipv6-unicast multipath maximum-paths 64
+set / network-instance default protocols bgp route-advertisement rapid-withdrawal true
+set / network-instance default protocols bgp route-advertisement wait-for-fib-install true
+set / network-instance default protocols bgp group ebgp-underlay admin-state enable
+set / network-instance default protocols bgp group ebgp-underlay export-policy [ export-all ]
+set / network-instance default protocols bgp group ebgp-underlay import-policy [ import-all ]
+set / network-instance default protocols bgp group ebgp-underlay failure-detection enable-bfd true
+set / network-instance default protocols bgp group ebgp-underlay failure-detection fast-failover true
+set / network-instance default protocols bgp group ebgp-underlay afi-safi evpn admin-state disable
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv4-unicast admin-state enable
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv4-unicast add-paths receive true
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv4-unicast add-paths send true
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv4-unicast ipv4-unicast advertise-ipv6-next-hops true
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv4-unicast ipv4-unicast receive-ipv6-next-hops true
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv6-unicast admin-state enable
+set / network-instance default protocols bgp group ebgp-underlay timers connect-retry 10
+set / network-instance default protocols bgp group ebgp-underlay timers hold-time 3
+set / network-instance default protocols bgp group ebgp-underlay timers keepalive-interval 1
+set / network-instance default protocols bgp group ebgp-underlay timers minimum-advertisement-interval 1
+set / network-instance default protocols bgp group ebgp-underlay transport passive-mode false
+set / network-instance default protocols bgp neighbor 192.168.1.1 admin-state enable
+set / network-instance default protocols bgp neighbor 192.168.1.1 peer-as 64500
+set / network-instance default protocols bgp neighbor 192.168.1.1 peer-group ebgp-underlay
+set / network-instance default protocols bgp neighbor 192.168.1.3 admin-state enable
+set / network-instance default protocols bgp neighbor 192.168.1.3 peer-as 64500
+set / network-instance default protocols bgp neighbor 192.168.1.3 peer-group ebgp-underlay
+```
+
+BGP configuration on leaf2:
+
+```srl
+set / network-instance default protocols bgp admin-state enable
+set / network-instance default protocols bgp autonomous-system 64502
+set / network-instance default protocols bgp router-id 172.16.10.2
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/1.0 peer-group ebgp-underlay
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/1.0 allowed-peer-as [ 64500..64505 ]
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/2.0 peer-group ebgp-underlay
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/2.0 allowed-peer-as [ 64500..64505 ]
+set / network-instance default protocols bgp ebgp-default-policy import-reject-all false
+set / network-instance default protocols bgp ebgp-default-policy export-reject-all false
+set / network-instance default protocols bgp afi-safi evpn evpn rapid-update true
+set / network-instance default protocols bgp afi-safi ipv4-unicast admin-state enable
+set / network-instance default protocols bgp afi-safi ipv4-unicast multipath allow-multiple-as true
+set / network-instance default protocols bgp afi-safi ipv4-unicast multipath maximum-paths 64
+set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast advertise-ipv6-next-hops true
+set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast receive-ipv6-next-hops true
+set / network-instance default protocols bgp afi-safi ipv6-unicast admin-state enable
+set / network-instance default protocols bgp afi-safi ipv6-unicast multipath allow-multiple-as true
+set / network-instance default protocols bgp afi-safi ipv6-unicast multipath maximum-paths 64
+set / network-instance default protocols bgp route-advertisement rapid-withdrawal true
+set / network-instance default protocols bgp route-advertisement wait-for-fib-install true
+set / network-instance default protocols bgp group ebgp-underlay admin-state enable
+set / network-instance default protocols bgp group ebgp-underlay export-policy [ export-to-underlay ]
+set / network-instance default protocols bgp group ebgp-underlay import-policy [ import-from-underlay ]
+set / network-instance default protocols bgp group ebgp-underlay failure-detection enable-bfd true
+set / network-instance default protocols bgp group ebgp-underlay failure-detection fast-failover true
+set / network-instance default protocols bgp group ebgp-underlay afi-safi evpn admin-state disable
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv4-unicast admin-state enable
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv4-unicast ipv4-unicast advertise-ipv6-next-hops true
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv4-unicast ipv4-unicast receive-ipv6-next-hops true
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv6-unicast admin-state enable
+set / network-instance default protocols bgp group ebgp-underlay timers connect-retry 10
+set / network-instance default protocols bgp group ebgp-underlay timers hold-time 3
+set / network-instance default protocols bgp group ebgp-underlay timers keepalive-interval 1
+set / network-instance default protocols bgp group ebgp-underlay timers minimum-advertisement-interval 1
+set / network-instance default protocols bgp group ebgp-underlay transport passive-mode false
+set / network-instance default protocols bgp neighbor 192.168.1.5 admin-state enable
+set / network-instance default protocols bgp neighbor 192.168.1.5 peer-as 64500
+set / network-instance default protocols bgp neighbor 192.168.1.5 peer-group ebgp-underlay
+set / network-instance default protocols bgp neighbor 192.168.1.7 admin-state enable
+set / network-instance default protocols bgp neighbor 192.168.1.7 peer-as 64500
+set / network-instance default protocols bgp neighbor 192.168.1.7 peer-group ebgp-underlay
+```
+
+BGP configuration on spine1:
+
+```srl
+set / network-instance default protocols bgp admin-state enable
+set / network-instance default protocols bgp autonomous-system 64500
+set / network-instance default protocols bgp router-id 172.16.10.3
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/1.0 peer-group ebgp-underlay
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/1.0 allowed-peer-as [ 64500..64505 ]
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/2.0 peer-group ebgp-underlay
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/2.0 allowed-peer-as [ 64500..64505 ]
+set / network-instance default protocols bgp afi-safi evpn evpn rapid-update true
+set / network-instance default protocols bgp afi-safi ipv4-unicast admin-state enable
+set / network-instance default protocols bgp afi-safi ipv4-unicast multipath allow-multiple-as true
+set / network-instance default protocols bgp afi-safi ipv4-unicast multipath maximum-paths 64
+set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast advertise-ipv6-next-hops true
+set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast receive-ipv6-next-hops true
+set / network-instance default protocols bgp afi-safi ipv6-unicast admin-state enable
+set / network-instance default protocols bgp afi-safi ipv6-unicast multipath allow-multiple-as true
+set / network-instance default protocols bgp afi-safi ipv6-unicast multipath maximum-paths 64
+set / network-instance default protocols bgp route-advertisement rapid-withdrawal true
+set / network-instance default protocols bgp route-advertisement wait-for-fib-install true
+set / network-instance default protocols bgp group ebgp-underlay admin-state enable
+set / network-instance default protocols bgp group ebgp-underlay export-policy [ export-all ]
+set / network-instance default protocols bgp group ebgp-underlay import-policy [ import-all ]
+set / network-instance default protocols bgp group ebgp-underlay failure-detection enable-bfd true
+set / network-instance default protocols bgp group ebgp-underlay failure-detection fast-failover true
+set / network-instance default protocols bgp group ebgp-underlay afi-safi evpn admin-state disable
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv4-unicast admin-state enable
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv4-unicast ipv4-unicast advertise-ipv6-next-hops true
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv4-unicast ipv4-unicast receive-ipv6-next-hops true
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv6-unicast admin-state enable
+set / network-instance default protocols bgp group ebgp-underlay timers connect-retry 10
+set / network-instance default protocols bgp group ebgp-underlay timers hold-time 3
+set / network-instance default protocols bgp group ebgp-underlay timers keepalive-interval 1
+set / network-instance default protocols bgp group ebgp-underlay timers minimum-advertisement-interval 1
+set / network-instance default protocols bgp group ebgp-underlay transport passive-mode false
+set / network-instance default protocols bgp neighbor 192.168.1.0 admin-state enable
+set / network-instance default protocols bgp neighbor 192.168.1.0 peer-as 64501
+set / network-instance default protocols bgp neighbor 192.168.1.0 peer-group ebgp-underlay
+set / network-instance default protocols bgp neighbor 192.168.1.6 admin-state enable
+set / network-instance default protocols bgp neighbor 192.168.1.6 peer-as 64502
+set / network-instance default protocols bgp neighbor 192.168.1.6 peer-group ebgp-underlay
+```
+
+BGP configuration on spine2:
+
+```srl
+set / network-instance default protocols bgp admin-state enable
+set / network-instance default protocols bgp autonomous-system 64500
+set / network-instance default protocols bgp router-id 172.16.10.4
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/1.0 peer-group ebgp-underlay
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/1.0 allowed-peer-as [ 64500..64505 ]
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/2.0 peer-group ebgp-underlay
+set / network-instance default protocols bgp dynamic-neighbors interface ethernet-1/2.0 allowed-peer-as [ 64500..64505 ]
+set / network-instance default protocols bgp afi-safi evpn evpn rapid-update true
+set / network-instance default protocols bgp afi-safi ipv4-unicast admin-state enable
+set / network-instance default protocols bgp afi-safi ipv4-unicast multipath allow-multiple-as true
+set / network-instance default protocols bgp afi-safi ipv4-unicast multipath maximum-paths 64
+set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast advertise-ipv6-next-hops true
+set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast receive-ipv6-next-hops true
+set / network-instance default protocols bgp afi-safi ipv6-unicast admin-state enable
+set / network-instance default protocols bgp afi-safi ipv6-unicast multipath allow-multiple-as true
+set / network-instance default protocols bgp afi-safi ipv6-unicast multipath maximum-paths 64
+set / network-instance default protocols bgp route-advertisement rapid-withdrawal true
+set / network-instance default protocols bgp route-advertisement wait-for-fib-install true
+set / network-instance default protocols bgp group ebgp-underlay admin-state enable
+set / network-instance default protocols bgp group ebgp-underlay export-policy [ export-to-underlay ]
+set / network-instance default protocols bgp group ebgp-underlay import-policy [ import-from-underlay ]
+set / network-instance default protocols bgp group ebgp-underlay failure-detection enable-bfd true
+set / network-instance default protocols bgp group ebgp-underlay failure-detection fast-failover true
+set / network-instance default protocols bgp group ebgp-underlay afi-safi evpn admin-state disable
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv4-unicast admin-state enable
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv4-unicast ipv4-unicast advertise-ipv6-next-hops true
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv4-unicast ipv4-unicast receive-ipv6-next-hops true
+set / network-instance default protocols bgp group ebgp-underlay afi-safi ipv6-unicast admin-state enable
+set / network-instance default protocols bgp group ebgp-underlay timers connect-retry 10
+set / network-instance default protocols bgp group ebgp-underlay timers hold-time 3
+set / network-instance default protocols bgp group ebgp-underlay timers keepalive-interval 1
+set / network-instance default protocols bgp group ebgp-underlay timers minimum-advertisement-interval 1
+set / network-instance default protocols bgp group ebgp-underlay transport passive-mode false
+set / network-instance default protocols bgp neighbor 192.168.1.2 admin-state enable
+set / network-instance default protocols bgp neighbor 192.168.1.2 peer-as 64501
+set / network-instance default protocols bgp neighbor 192.168.1.2 peer-group ebgp-underlay
+set / network-instance default protocols bgp neighbor 192.168.1.4 admin-state enable
+set / network-instance default protocols bgp neighbor 192.168.1.4 peer-as 64502
+set / network-instance default protocols bgp neighbor 192.168.1.4 peer-group ebgp-underlay
+```
+
+
+## Configuring ACL
+
+Example to block ICMP ping on leaf1 interface
+
+```srl
+set / acl acl-filter block_icmp type ipv4 statistics-per-entry true
+set / acl acl-filter block_icmp type ipv4 entry 10 match ipv4 protocol icmp
+set / acl acl-filter block_icmp type ipv4 entry 10 match ipv4 source-ip prefix 192.168.1.0/31
+set / acl acl-filter block_icmp type ipv4 entry 10 action drop
+```
+
+Applying ACL under leaf1 interface:
+
+```srl
+set / acl interface ethernet-1/1.0 input acl-filter block_icmp type ipv4
+```
+
+Ping command:
+
+```srl
+ping 192.168.1.1 network-instance default
+```
+
+## gRPC
+
+Refer to [gNMIc page](https://gnmic.openconfig.net/) for more details.
+
+Install gNMI client:
+
+```bash
+bash -c "$(curl -sL https://get-gnmic.openconfig.net)"
+```
+
+Use client to connect to leaf1 and query gnmi capabilities:
+
+```bash
+gnmic -a leaf1:57401 -u admin -p password --insecure cap
+```
+
+Query interface stats:
+
+```bash
+gnmic -a leaf1:57401 -u admin -p password --insecure get --path /interface[name=ethernet-1/1]/statistics -e json_ietf
+```
+
+
