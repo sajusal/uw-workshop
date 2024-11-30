@@ -1,0 +1,74 @@
+name: srl-uw-full-config
+
+mgmt:
+  network: srl-uw-lab-full-mgmt
+  ipv4-subnet: 172.40.20.0/24
+  ipv6-subnet: 2001:172:40:20::/64
+
+prefix: ""
+topology:
+  defaults:
+    kind: nokia_srlinux
+  kinds:
+    nokia_srlinux:
+      type: ixrh4
+      image: ghcr.io/nokia/srlinux:24.10.1
+    linux:
+      image: ghcr.io/srl-labs/alpine
+  nodes:
+    leaf1:
+      mgmt-ipv4: 172.40.20.2
+      mgmt-ipv6: 2001:172:40:20::2
+      startup-config: leaf1-full-config.txt
+    leaf2:
+      mgmt-ipv4: 172.40.20.3
+      mgmt-ipv6: 2001:172:40:20::3
+      startup-config: leaf2-full-config.txt
+    spine1:
+      mgmt-ipv4: 172.40.20.4
+      mgmt-ipv6: 2001:172:40:20::4
+      startup-config: spine1-full-config.txt
+    spine2:
+      mgmt-ipv4: 172.40.20.5
+      mgmt-ipv6: 2001:172:40:20::5
+      startup-config: spine2-full-config.txt
+    client1:
+      kind: linux
+      mgmt-ipv4: 172.40.20.10
+      mgmt-ipv6: 2001:172:40:20::10
+      exec:
+        - ip address add 10.100.10.10/24 dev eth1
+        - ip route add 10.100.0.0/16 via 10.100.10.11
+    client2:
+      kind: linux
+      mgmt-ipv4: 172.40.20.11
+      mgmt-ipv6: 2001:172:40:20::11
+      exec:
+        - ip address add 10.100.20.20/24 dev eth1
+        - ip route add 10.100.0.0/16 via 10.100.20.22
+    client3:
+      kind: linux
+      mgmt-ipv4: 172.40.20.12
+      mgmt-ipv6: 2001:172:40:20::12
+      exec:
+        - ip address add 10.100.30.30/24 dev eth1
+        - ip route add 10.100.0.0/16 via 10.100.30.33
+    client4:
+      kind: linux
+      mgmt-ipv4: 172.40.20.13
+      mgmt-ipv6: 2001:172:40:20::13
+      exec:
+        - ip address add 10.100.40.40/24 dev eth1
+        - ip route add 10.100.0.0/16 via 10.100.40.44
+  links:
+      # spine-leaf links
+    - endpoints: ["leaf1:e1-1", "spine1:e1-1"]
+    - endpoints: ["leaf2:e1-1", "spine2:e1-1"]    
+    - endpoints: ["leaf1:e1-2", "spine2:e1-2"]
+    - endpoints: ["leaf2:e1-2", "spine1:e1-2"]    
+    
+      # leaf-client links
+    - endpoints: ["client1:eth1","leaf1:e1-10"]
+    - endpoints: ["client2:eth1","leaf1:e1-11"]
+    - endpoints: ["client3:eth1","leaf2:e1-10"]
+    - endpoints: ["client4:eth1","leaf2:e1-11"]
