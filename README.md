@@ -173,7 +173,6 @@ Interface configuration on Leaf1:
 set / interface ethernet-1/1 admin-state enable
 set / interface ethernet-1/1 vlan-tagging true
 set / interface ethernet-1/1 subinterface 0 type routed
-set / interface ethernet-1/1 subinterface 0 admin-state enable
 set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/1 subinterface 0 ipv4 address 192.168.1.0/31
 set / interface ethernet-1/1 subinterface 0 ipv6 admin-state enable
@@ -181,7 +180,6 @@ set / interface ethernet-1/1 subinterface 0 ipv6 router-advertisement router-rol
 set / interface ethernet-1/1 subinterface 0 vlan encap single-tagged vlan-id 1
 set / interface ethernet-1/2 admin-state enable
 set / interface ethernet-1/2 vlan-tagging true
-set / interface ethernet-1/2 subinterface 0 admin-state enable
 set / interface ethernet-1/2 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/2 subinterface 0 ipv4 address 192.168.1.2/31
 set / interface ethernet-1/2 subinterface 0 ipv6 admin-state enable
@@ -191,7 +189,6 @@ set / interface ethernet-1/10 description Client-1-1
 set / interface ethernet-1/10 admin-state enable
 set / interface ethernet-1/10 ethernet port-speed 40G
 set / interface ethernet-1/10 subinterface 0 type routed
-set / interface ethernet-1/10 subinterface 0 admin-state enable
 set / interface ethernet-1/10 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/10 subinterface 0 ipv4 address 10.100.10.11/24
 set / interface ethernet-1/10 subinterface 0 ipv4 arp host-route populate dynamic datapath-programming true
@@ -200,21 +197,18 @@ set / interface ethernet-1/11 description Client-1-2
 set / interface ethernet-1/11 admin-state enable
 set / interface ethernet-1/11 ethernet port-speed 40G
 set / interface ethernet-1/11 subinterface 0 type routed
-set / interface ethernet-1/11 subinterface 0 admin-state enable
 set / interface ethernet-1/11 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/11 subinterface 0 ipv4 address 10.100.20.22/24
 set / interface ethernet-1/11 subinterface 0 ipv4 arp host-route populate dynamic datapath-programming true
 set / interface ethernet-1/11 subinterface 0 ipv6 admin-state enable
 set / interface ethernet-1/12 subinterface 0 ipv6 admin-state enable
 set / interface lo0 admin-state enable
-set / interface lo0 subinterface 0 admin-state enable
 set / interface lo0 subinterface 0 ipv4 admin-state enable
 set / interface lo0 subinterface 0 ipv4 address 1.1.1.1/32
 set / interface lo0 subinterface 0 ipv6 admin-state enable
 set / interface lo0 subinterface 0 ipv6 address 1::/128
 set / interface system0 description system
 set / interface system0 admin-state enable
-set / interface system0 subinterface 0 admin-state enable
 set / interface system0 subinterface 0 ipv4 admin-state enable
 set / interface system0 subinterface 0 ipv4 address 172.16.10.1/32
 ```
@@ -224,7 +218,6 @@ Interface configuration on Leaf2:
 ```srl
 set / interface ethernet-1/1 admin-state enable
 set / interface ethernet-1/1 vlan-tagging true
-set / interface ethernet-1/1 subinterface 0 admin-state enable
 set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/1 subinterface 0 ipv4 address 192.168.1.4/31
 set / interface ethernet-1/1 subinterface 0 ipv6 admin-state enable
@@ -232,7 +225,6 @@ set / interface ethernet-1/1 subinterface 0 ipv6 router-advertisement router-rol
 set / interface ethernet-1/1 subinterface 0 vlan encap single-tagged vlan-id 1
 set / interface ethernet-1/2 admin-state enable
 set / interface ethernet-1/2 vlan-tagging true
-set / interface ethernet-1/2 subinterface 0 admin-state enable
 set / interface ethernet-1/2 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/2 subinterface 0 ipv4 address 192.168.1.6/31
 set / interface ethernet-1/2 subinterface 0 ipv6 admin-state enable
@@ -242,7 +234,6 @@ set / interface ethernet-1/10 description Client-2-1
 set / interface ethernet-1/10 admin-state enable
 set / interface ethernet-1/10 ethernet port-speed 40G
 set / interface ethernet-1/10 subinterface 0 type routed
-set / interface ethernet-1/10 subinterface 0 admin-state enable
 set / interface ethernet-1/10 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/10 subinterface 0 ipv4 address 10.100.30.33/24
 set / interface ethernet-1/10 subinterface 0 ipv4 arp host-route populate dynamic datapath-programming true
@@ -250,13 +241,11 @@ set / interface ethernet-1/11 description Client-2-2
 set / interface ethernet-1/11 admin-state enable
 set / interface ethernet-1/11 ethernet port-speed 40G
 set / interface ethernet-1/11 subinterface 0 type routed
-set / interface ethernet-1/11 subinterface 0 admin-state enable
 set / interface ethernet-1/11 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/11 subinterface 0 ipv4 address 10.100.40.44/24
 set / interface ethernet-1/11 subinterface 0 ipv4 arp host-route populate dynamic datapath-programming true
 set / interface system0 description system
 set / interface system0 admin-state enable
-set / interface system0 subinterface 0 admin-state enable
 set / interface system0 subinterface 0 ipv4 admin-state enable
 set / interface system0 subinterface 0 ipv4 address 172.16.10.2/32
 ```
@@ -266,7 +255,6 @@ Interface configuration on spine1:
 ```srl
 set / interface ethernet-1/1 admin-state enable
 set / interface ethernet-1/1 vlan-tagging true
-set / interface ethernet-1/1 subinterface 0 admin-state enable
 set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/1 subinterface 0 ipv4 address 192.168.1.1/31
 set / interface ethernet-1/1 subinterface 0 ipv6 admin-state enable
@@ -274,7 +262,6 @@ set / interface ethernet-1/1 subinterface 0 ipv6 router-advertisement router-rol
 set / interface ethernet-1/1 subinterface 0 vlan encap single-tagged vlan-id 1
 set / interface ethernet-1/2 admin-state enable
 set / interface ethernet-1/2 vlan-tagging true
-set / interface ethernet-1/2 subinterface 0 admin-state enable
 set / interface ethernet-1/2 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/2 subinterface 0 ipv4 address 192.168.1.7/31
 set / interface ethernet-1/2 subinterface 0 ipv6 admin-state enable
@@ -282,7 +269,6 @@ set / interface ethernet-1/2 subinterface 0 ipv6 router-advertisement router-rol
 set / interface ethernet-1/2 subinterface 0 vlan encap single-tagged vlan-id 1
 set / interface system0 description system
 set / interface system0 admin-state enable
-set / interface system0 subinterface 0 admin-state enable
 set / interface system0 subinterface 0 ipv4 admin-state enable
 set / interface system0 subinterface 0 ipv4 address 172.16.10.3/32
 ```
@@ -292,7 +278,6 @@ Interface configuration on spine2:
 ```srl
 set / interface ethernet-1/1 admin-state enable
 set / interface ethernet-1/1 vlan-tagging true
-set / interface ethernet-1/1 subinterface 0 admin-state enable
 set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/1 subinterface 0 ipv4 address 192.168.1.5/31
 set / interface ethernet-1/1 subinterface 0 ipv6 admin-state enable
@@ -300,15 +285,16 @@ set / interface ethernet-1/1 subinterface 0 ipv6 router-advertisement router-rol
 set / interface ethernet-1/1 subinterface 0 vlan encap single-tagged vlan-id 1
 set / interface ethernet-1/2 admin-state enable
 set / interface ethernet-1/2 vlan-tagging true
-set / interface ethernet-1/2 subinterface 0 admin-state enable
 set / interface ethernet-1/2 subinterface 0 ipv4 admin-state enable
 set / interface ethernet-1/2 subinterface 0 ipv4 address 192.168.1.3/31
 set / interface ethernet-1/2 subinterface 0 ipv6 admin-state enable
 set / interface ethernet-1/2 subinterface 0 ipv6 router-advertisement router-role admin-state enable
 set / interface ethernet-1/2 subinterface 0 vlan encap single-tagged vlan-id 1
+set / interface lo0 admin-state enable
+set / interface lo0 subinterface 0 ipv4 admin-state enable
+set / interface lo0 subinterface 0 ipv4 address 11.11.11.11/32
 set / interface system0 description system
 set / interface system0 admin-state enable
-set / interface system0 subinterface 0 admin-state enable
 set / interface system0 subinterface 0 ipv4 admin-state enable
 set / interface system0 subinterface 0 ipv4 address 172.16.10.4/32
 ```
@@ -328,7 +314,6 @@ set / network-instance default interface ethernet-1/1.0
 set / network-instance default interface ethernet-1/10.0
 set / network-instance default interface ethernet-1/11.0
 set / network-instance default interface ethernet-1/2.0
-set / network-instance default interface lo0.0
 set / network-instance default interface system0.0
 ```
 
@@ -346,17 +331,40 @@ set / network-instance default interface system0.0
 
 ## Static Routes
 
+Objective is to ping between the lo0 loopback IPs on leaf1 and spine2.
+
 Static route configuration on leaf1:
 
 ```srl
+set / network-instance default interface lo0.0
 set / network-instance default static-routes route 11.11.11.11/32 admin-state enable
 set / network-instance default static-routes route 11.11.11.11/32 metric 1
 set / network-instance default static-routes route 11.11.11.11/32 preference 10
-set / network-instance default static-routes route 11.11.11.11/32 next-hop-group nhg-10.100.10.0/24
-set / network-instance default next-hop-groups group nhg-10.100.10.0/24 admin-state enable
-set / network-instance default next-hop-groups group nhg-10.100.10.0/24 nexthop 1 ip-address 10.100.10.10
-set / network-instance default next-hop-groups group nhg-10.100.10.0/24 nexthop 1 admin-state enable
-set / network-instance default next-hop-groups group nhg-10.100.10.0/24 nexthop 1 resolve true
+set / network-instance default static-routes route 11.11.11.11/32 next-hop-group nhg-lb
+set / network-instance default next-hop-groups group nhg-lb admin-state enable
+set / network-instance default next-hop-groups group nhg-lb nexthop 1 ip-address 192.168.1.3
+set / network-instance default next-hop-groups group nhg-lb nexthop 1 admin-state enable
+set / network-instance default next-hop-groups group nhg-lb nexthop 1 resolve true
+```
+
+Static route configuration on spine2:
+
+```srl
+set / network-instance default interface lo0.0
+set / network-instance default static-routes route 1.1.1.1/32 admin-state enable
+set / network-instance default static-routes route 1.1.1.1/32 metric 1
+set / network-instance default static-routes route 1.1.1.1/32 preference 10
+set / network-instance default static-routes route 1.1.1.1/32 next-hop-group nhg-lb
+set / network-instance default next-hop-groups group nhg-lb admin-state enable
+set / network-instance default next-hop-groups group nhg-lb nexthop 1 ip-address 192.168.1.2
+set / network-instance default next-hop-groups group nhg-lb nexthop 1 admin-state enable
+set / network-instance default next-hop-groups group nhg-lb nexthop 1 resolve true
+```
+
+Ping spine2 loopback from leaf1:
+
+```srl
+ping 11.11.11.11 network-instance default
 ```
 
 ## Routing Policy
