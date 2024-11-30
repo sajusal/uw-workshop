@@ -638,4 +638,13 @@ Query interface stats:
 gnmic -a leaf1:57401 -u admin -p password --insecure get --path /interface[name=ethernet-1/1]/statistics -e json_ietf
 ```
 
+## Deploy lab with full config
 
+To deploy the lab with the full config for this workshop:
+
+```bash
+cd config
+sudo clab dep -t clab-uw-full-config.yml
+```
+
+This will deploy the lab with the full configuration for this workshop. After deployment, you may explore the lab.
