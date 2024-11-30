@@ -9,6 +9,10 @@ Shortcut links to major sections in this README:
 |   |   |
 |---|---|
 | [Lab Topology](#lab-topology) | [Deploying the lab](#deploying-the-lab) |
+| [SR Linux Commands](#sr-linux-configuration-mode) | [Configure Interfaces](#configure-interfaces) |
+| [Default Network Instance](#default-network-instance) | [Static Routes](#static-routes) |
+| [Routing Policy](#routing-policy) | [Configure BGP](#configure-bgp) |
+| [ACL](#configuring-acl) | [gRPC](#grpc) |
 
 ## Lab Environment
 
