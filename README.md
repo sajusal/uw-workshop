@@ -170,6 +170,20 @@ Here's a reference table with some commonly used commands.
 | Access Linux shell | `bash` |
 | Find a command | `tree flat detail \| grep <keyword>` |
 
+### Sample config for CLI lab
+
+Commit the below config on leaf1:
+
+```srl
+set / system netconf-server mgmt admin-state enable
+set / system netconf-server mgmt ssh-server mgmt
+set / system netconf-server mgmt session-limit 10
+```
+
+Now, delete the `session-limit`. Discard the change, then make the change again and commit.
+
+Enter state mode and verify the state of the chassis.
+
 ## Configure Interfaces
 
 Interface configuration on Leaf1:
