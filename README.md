@@ -12,6 +12,7 @@ Shortcut links to major sections in this README:
 | [SR Linux Commands](#sr-linux-configuration-mode) | [Configure Interfaces](#configure-interfaces) |
 | [Default Network Instance](#default-network-instance) | [Static Routes](#static-routes) |
 | [Routing Policy](#routing-policy) | [Configure BGP](#configure-bgp) |
+| [BGP show commands](#bgp-show-commands) | |
 | [ACL](#configuring-acl) | [gRPC](#grpc) |
 
 ## Lab Environment
@@ -592,6 +593,45 @@ set / network-instance default protocols bgp neighbor 192.168.1.4 peer-as 64502
 set / network-instance default protocols bgp neighbor 192.168.1.4 peer-group ebgp-underlay
 ```
 
+## BGP Show Commands
+
+To check the route-table for the default vrf:
+
+```srl
+show network-instance default route-table
+```
+
+To check BGP neighbor status:
+
+```srl
+show network-instance default protocols bgp neighbor
+```
+
+To check routes advertised to a BGP neighbor:
+
+```srl
+show network-instance default protocols bgp neighbor 192.168.1.3 advertised-routes ipv4
+```
+
+To check routes received from a BGP neighbor:
+
+```srl
+show network-instance default protocols bgp neighbor 192.168.1.3 received-routes ipv4
+```
+
+Now that we applied the above configs, we should be able to ping between the clients.
+
+Login to client1 using:
+
+```bash
+docker exec -it client1 sh
+```
+
+Then ping the other clients
+
+```bash
+ping 10.100.30.30
+```
 
 ## Configuring ACL
 
