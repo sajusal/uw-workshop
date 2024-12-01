@@ -14,7 +14,7 @@ topology:
       type: ixrh4
       image: ghcr.io/nokia/srlinux:24.10.1
     linux:
-      image: ghcr.io/srl-labs/alpine
+      image: ghcr.io/srl-labs/network-multitool
   nodes:
     leaf1:
       mgmt-ipv4: 172.20.20.2
