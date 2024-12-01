@@ -12,8 +12,8 @@ Shortcut links to major sections in this README:
 | [SR Linux Commands](#sr-linux-configuration-mode) | [Configure Interfaces](#configure-interfaces) |
 | [Default Network Instance](#default-network-instance) | [Static Routes](#static-routes) |
 | [Routing Policy](#routing-policy) | [Configure BGP](#configure-bgp) |
-| [BGP show commands](#bgp-show-commands) | |
-| [ACL](#configuring-acl) | [gRPC](#grpc) |
+| [BGP show commands](#bgp-show-commands) | [ACL](#configuring-acl) |
+| [gRPC](#grpc) | [Useful Links](#useful-links) |
 
 ## Lab Environment
 
@@ -688,3 +688,13 @@ sudo clab dep -t clab-uw-full-config.yml
 ```
 
 This will deploy the lab with the full configuration for this workshop. After deployment, you may explore the lab.
+
+## Useful Links
+
+[SR Linux Official documentation](https://documentation.nokia.com/srlinux/)
+
+[SR Linux blogs and sample labs](https://learn.srlinux.dev/)
+
+[Containerlab](https://containerlab.dev/)
+
+[All sample SRL labs](https://github.com/srl-labs)
