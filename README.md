@@ -335,8 +335,6 @@ set / network-instance default type default
 set / network-instance default admin-state enable
 set / network-instance default description "Default network instance"
 set / network-instance default ip-forwarding receive-ipv4-check false
-set / network-instance default inter-instance-policies apply-policy import-policy import-all
-set / network-instance default inter-instance-policies apply-policy export-policy export-all
 set / network-instance default interface ethernet-1/1.0
 set / network-instance default interface ethernet-1/10.0
 set / network-instance default interface ethernet-1/11.0
