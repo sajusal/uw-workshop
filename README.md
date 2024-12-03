@@ -388,12 +388,6 @@ set / network-instance default next-hop-groups group nhg-lb nexthop 1 admin-stat
 set / network-instance default next-hop-groups group nhg-lb nexthop 1 resolve true
 ```
 
-Ping spine2 loopback from leaf1:
-
-```srl
-ping 11.11.11.11 network-instance default
-```
-
 ## Routing Policy
 
 Routing policy configuration on all routers:
@@ -423,6 +417,12 @@ set / routing-policy policy import-all default-action policy-result accept
 set / routing-policy policy import-from-underlay default-action policy-result reject
 set / routing-policy policy import-from-underlay statement 20 match protocol bgp
 set / routing-policy policy import-from-underlay statement 20 action policy-result accept
+```
+
+Ping spine2 loopback from leaf1:
+
+```srl
+ping 11.11.11.11 network-instance default
 ```
 
 ## Configure BGP
