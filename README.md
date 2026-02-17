@@ -39,26 +39,37 @@ The objective of the hands on section of this workshop is the following:
 
 ![image](lab-topology.jpg)
 
-## Deploying the lab
+## Install Containerlab
 
-Click on the Codespaces icon above to create codespace VM for your lab.
+Login to the VM using the credentials given to you.
 
-After codespace VM is created, the repo will be automatically cloned to the VM and you will be taken directly into the repo directory.
-
-Verify that the git repo files are available on your codespaces VM.
+Install Containerlab on your VM.
 
 ```bash
-@sajusal ➜ /workspaces/uw-workshop (main) $ 
-@sajusal ➜ /workspaces/uw-workshop (main) $ ls -lrt
-total 108
--rw-rw-rw- 1 vscode root  1923 Nov 15 03:03 srl-uw.clab.yml
--rw-rw-rw- 1 vscode root 97320 Nov 15 03:03 lab-topology.jpg
--rw-rw-rw- 1 vscode root  4451 Nov 15 03:03 README.md
+curl -sL https://containerlab.dev/setup | sudo -E bash -s "all"
 ```
+
+**Logout and login for the sudo privileges to take effect.**
+
+Clone the Git repo to your VM:
+
+```
+git clone https://github.com/sajusal/uw-workshop.git
+```
+
+Verify that the git repo files are now available on your VM.
+
+```
+ls -lrt uw-workshop/
+```
+
+
+## Deploying the lab
 
 To deploy the lab, run the following:
 
 ```bash
+cd uw-workshop
 sudo clab deploy -t srl-uw.clab.yml
 ```
 
