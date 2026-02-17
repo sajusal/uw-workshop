@@ -499,12 +499,12 @@ set / network-instance default protocols bgp ebgp-default-policy export-reject-a
 set / network-instance default protocols bgp afi-safi evpn evpn rapid-update true
 set / network-instance default protocols bgp afi-safi ipv4-unicast admin-state enable
 set / network-instance default protocols bgp afi-safi ipv4-unicast multipath allow-multiple-as true
-set / network-instance default protocols bgp afi-safi ipv4-unicast multipath maximum-paths 64
+set / network-instance default protocols bgp afi-safi ipv4-unicast multipath ebgp maximum-paths 64
 set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast advertise-ipv6-next-hops true
 set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast receive-ipv6-next-hops true
 set / network-instance default protocols bgp afi-safi ipv6-unicast admin-state enable
 set / network-instance default protocols bgp afi-safi ipv6-unicast multipath allow-multiple-as true
-set / network-instance default protocols bgp afi-safi ipv6-unicast multipath maximum-paths 64
+set / network-instance default protocols bgp afi-safi ipv6-unicast multipath ebgp maximum-paths 64
 set / network-instance default protocols bgp route-advertisement rapid-withdrawal true
 set / network-instance default protocols bgp route-advertisement wait-for-fib-install true
 set / network-instance default protocols bgp group ebgp-underlay admin-state enable
@@ -543,12 +543,12 @@ set / network-instance default protocols bgp dynamic-neighbors interface etherne
 set / network-instance default protocols bgp afi-safi evpn evpn rapid-update true
 set / network-instance default protocols bgp afi-safi ipv4-unicast admin-state enable
 set / network-instance default protocols bgp afi-safi ipv4-unicast multipath allow-multiple-as true
-set / network-instance default protocols bgp afi-safi ipv4-unicast multipath maximum-paths 64
+set / network-instance default protocols bgp afi-safi ipv4-unicast multipath ebgp maximum-paths 64
 set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast advertise-ipv6-next-hops true
 set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast receive-ipv6-next-hops true
 set / network-instance default protocols bgp afi-safi ipv6-unicast admin-state enable
 set / network-instance default protocols bgp afi-safi ipv6-unicast multipath allow-multiple-as true
-set / network-instance default protocols bgp afi-safi ipv6-unicast multipath maximum-paths 64
+set / network-instance default protocols bgp afi-safi ipv6-unicast multipath ebgp maximum-paths 64
 set / network-instance default protocols bgp route-advertisement rapid-withdrawal true
 set / network-instance default protocols bgp route-advertisement wait-for-fib-install true
 set / network-instance default protocols bgp group ebgp-underlay admin-state enable
@@ -587,12 +587,12 @@ set / network-instance default protocols bgp dynamic-neighbors interface etherne
 set / network-instance default protocols bgp afi-safi evpn evpn rapid-update true
 set / network-instance default protocols bgp afi-safi ipv4-unicast admin-state enable
 set / network-instance default protocols bgp afi-safi ipv4-unicast multipath allow-multiple-as true
-set / network-instance default protocols bgp afi-safi ipv4-unicast multipath maximum-paths 64
+set / network-instance default protocols bgp afi-safi ipv4-unicast multipath ebgp maximum-paths 64
 set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast advertise-ipv6-next-hops true
 set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast receive-ipv6-next-hops true
 set / network-instance default protocols bgp afi-safi ipv6-unicast admin-state enable
 set / network-instance default protocols bgp afi-safi ipv6-unicast multipath allow-multiple-as true
-set / network-instance default protocols bgp afi-safi ipv6-unicast multipath maximum-paths 64
+set / network-instance default protocols bgp afi-safi ipv6-unicast multipath ebgp maximum-paths 64
 set / network-instance default protocols bgp route-advertisement rapid-withdrawal true
 set / network-instance default protocols bgp route-advertisement wait-for-fib-install true
 set / network-instance default protocols bgp group ebgp-underlay admin-state enable
