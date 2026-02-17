@@ -449,7 +449,8 @@ set / network-instance default protocols bgp dynamic-neighbors interface etherne
 set / network-instance default protocols bgp afi-safi evpn evpn rapid-update true
 set / network-instance default protocols bgp afi-safi ipv4-unicast admin-state enable
 set / network-instance default protocols bgp afi-safi ipv4-unicast multipath allow-multiple-as true
-set / network-instance default protocols bgp afi-safi ipv4-unicast multipath maximum-paths 64
+set / network-instance default protocols bgp afi-safi ipv4-unicast multipath ebgp maximum-paths 64
+set / network-instance default protocols bgp afi-safi ipv4-unicast multipath ibgp maximum-paths 64
 set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast advertise-ipv6-next-hops true
 set / network-instance default protocols bgp afi-safi ipv4-unicast ipv4-unicast receive-ipv6-next-hops true
 set / network-instance default protocols bgp afi-safi ipv6-unicast admin-state enable
